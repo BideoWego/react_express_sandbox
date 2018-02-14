@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 // ----------------------------------------
 const cors = require('cors');
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'http://frantic-government.surge.sh' : 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production' ? 'https://frantic-government.surge.sh' : 'http://localhost:3000',
   credentials: true
 }));
 
