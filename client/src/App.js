@@ -9,7 +9,7 @@ const isProduction = () => {
 class App extends Component {
   async componentDidMount() {
     const domain = isProduction() ?
-      'https://peaceful-mesa-81349.herokuapp.com/' :
+      'https://peaceful-mesa-81349.herokuapp.com' :
       'http://localhost:3001';
 
     let response, json;
