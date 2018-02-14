@@ -2,10 +2,18 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const isProduction = () => {
+  return !window.location.href.match('localhost');
+};
+
 class App extends Component {
   async componentDidMount() {
+    const domain = isProduction() ?
+      'https://peaceful-mesa-81349.herokuapp.com/' :
+      'http://localhost:3001';
+
     let response, json;
-    response = await fetch('http://localhost:3001/api/v1/session', {
+    response = await fetch(`${ domain }/api/v1/session`, {
       method: 'DELETE',
       credentials: 'include',
       mode: 'cors'
@@ -13,7 +21,7 @@ class App extends Component {
     json = await response.json();
     console.log(json);
 
-    response = await fetch('http://localhost:3001/api/v1/login', {
+    response = await fetch(`${ domain }/api/v1/login`, {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
@@ -27,7 +35,7 @@ class App extends Component {
     json = await response.json();
     console.log(json);
 
-    response = await fetch('http://localhost:3001/api/v1/messages', {
+    response = await fetch(`${ domain }/api/v1/messages`, {
       credentials: 'include',
       mode: 'cors'
     });
